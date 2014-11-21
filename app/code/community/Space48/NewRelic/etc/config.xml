@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Space48_NewRelic>
+            <version>0.1.0</version>
+        </Space48_NewRelic>
+    </modules>
+    <global>
+        <models>
++            <space48_newrelic>
+                <class>Space48_NewRelic_Model</class>
+            </space48_newrelic>
+        </models>
+    </global>
+    <adminhtml>
+        <events>
+            <controller_action_predispatch_adminhtml_system_email_template_defaultTemplate>
++                <observers>
+                    <space48_newrelic_disable>
+                        <class>space48_newrelic/observer</class>
+                        <method>disableNewRelic</method>
+                    </space48_newrelic_disable>
+                </observers>
+            </controller_action_predispatch_adminhtml_system_email_template_defaultTemplate>
+        </events>
+    </adminhtml>
+</config>
